@@ -37,3 +37,4 @@ Vakitleri arada bir [namazvakitleri.diyanet.gov.tr](https://namazvakitleri.diyan
 ## Lisans
 
 Bu proje kişisel kullanım için serbesttir.
+
