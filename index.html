@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Namaz Vakitleri</title>
 
 <!-- iOS PWA -->
@@ -36,7 +36,7 @@
   --gold-dim: #b8862d;
   --gold-glow: #d4a54640;
   --mint: #a8d5ba;
-  --mint-dim: #a8d5ba60;
+  --mint-dim: #a8d5baa8;
   --white: #e8f5e9;
   --red: #ef5350;
   --card-active: linear-gradient(135deg, #1a5c40 0%, #1a6b4a 100%);
@@ -56,7 +56,7 @@ html, body {
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%;
   overscroll-behavior: none;
-  touch-action: pan-y;
+  touch-action: manipulation;
 }
 
 #app {
@@ -107,7 +107,7 @@ html, body {
   line-height: 1.1;
 }
 .app-title {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--mint-dim);
   letter-spacing: 3px;
   text-transform: uppercase;
@@ -201,8 +201,8 @@ html, body {
   font-family: 'Courier New', monospace;
 }
 .cd-sub {
-  font-size: 10px;
-  color: #a8d5ba40;
+  font-size: 12px;
+  color: var(--mint-dim);
   margin-top: 4px;
   letter-spacing: 1px;
 }
@@ -214,8 +214,8 @@ html, body {
   z-index: 2;
 }
 .prayer-section-label {
-  font-size: 10px;
-  color: #a8d5ba50;
+  font-size: 12px;
+  color: var(--mint-dim);
   letter-spacing: 2.5px;
   margin-bottom: 10px;
   padding-left: 4px;
@@ -230,18 +230,14 @@ html, body {
   background: var(--card-normal);
   border: 1px solid #1a5c4025;
   transition: all 0.25s ease;
-  cursor: pointer;
-  -webkit-user-select: none;
-  user-select: none;
 }
-.prayer-row:active { transform: scale(0.98); }
 .prayer-row.is-next {
   background: var(--card-active);
   border-color: var(--gold-glow);
   box-shadow: 0 2px 20px #00000020;
 }
 .prayer-row.is-past {
-  opacity: 0.45;
+  opacity: 0.6;
 }
 .prayer-left {
   display: flex;
@@ -267,7 +263,7 @@ html, body {
 }
 .prayer-row.is-next .prayer-name { color: var(--gold); font-weight: 700; }
 .prayer-sub {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--mint-dim);
   margin-top: 1px;
 }
@@ -290,8 +286,8 @@ html, body {
   z-index: 2;
 }
 .footer-note p {
-  font-size: 10px;
-  color: #a8d5ba30;
+  font-size: 12px;
+  color: var(--mint-dim);
   line-height: 1.6;
   max-width: 300px;
   margin: 0 auto;
@@ -368,7 +364,7 @@ html, body {
   outline: none;
   font-family: inherit;
 }
-.city-search::placeholder { color: #a8d5ba50; }
+.city-search::placeholder { color: var(--mint-dim); }
 .city-search:focus { border-color: var(--gold-glow); }
 .city-list {
   flex: 1;
@@ -397,7 +393,7 @@ html, body {
   border-color: var(--gold-glow);
 }
 .city-empty {
-  color: #a8d5ba40;
+  color: var(--mint-dim);
   text-align: center;
   margin-top: 40px;
   font-size: 14px;
@@ -441,41 +437,43 @@ html, body {
   letter-spacing: 1.5px;
   margin-bottom: 24px;
 }
-.ezan-play-btn {
+.ezan-time {
+  font-size: 34px;
+  font-weight: 600;
+  color: var(--white);
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 24px;
+}
+.ezan-close-btn {
   background: linear-gradient(135deg, var(--gold), var(--gold-dim));
   color: var(--bg-deep);
   border: none;
-  border-radius: 16px;
-  padding: 17px 32px;
-  font-size: 18px;
-  font-family: 'Amiri', serif;
+  border-radius: 14px;
+  padding: 14px 24px;
+  font-size: 16px;
   font-weight: 700;
-  cursor: pointer;
-  width: 100%;
-  margin-bottom: 12px;
-  box-shadow: 0 4px 24px var(--gold-glow);
-  transition: all 0.2s;
-}
-.ezan-play-btn:active { transform: scale(0.97); }
-.ezan-play-btn.playing {
-  background: #1a5c40;
-  color: var(--mint);
-  box-shadow: none;
-  cursor: default;
-}
-.ezan-close-btn {
-  background: transparent;
-  color: #a8d5ba60;
-  border: 1px solid #a8d5ba25;
-  border-radius: 12px;
-  padding: 11px 24px;
-  font-size: 14px;
   cursor: pointer;
   width: 100%;
   font-family: inherit;
   transition: all 0.2s;
 }
-.ezan-close-btn:active { background: #1a5c4030; }
+.ezan-close-btn:active { transform: scale(0.97); }
+
+/* ── Location button ── */
+.loc-btn {
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--gold-glow);
+  background: #1a5c4050;
+  color: var(--gold);
+  font-size: 15px;
+  cursor: pointer;
+  font-family: inherit;
+}
+.loc-btn:active { background: #1a5c4080; }
+.loc-msg { font-size: 13px; color: #ef9a9a; margin-top: 6px; min-height: 1em; }
 
 /* ── Scrollbar ── */
 ::-webkit-scrollbar { width: 3px; }
@@ -484,8 +482,12 @@ html, body {
 </style>
 </head>
 
+
 <body>
-<div id="app"></div>
+<div id="app">
+  <div id="main"></div>
+  <div id="overlay"></div>
+</div>
 
 <script>
 /* ═══════════════════════════════════════════
@@ -525,74 +527,37 @@ const CITIES=[
 ].map(([n,a,o])=>({name:n,lat:a,lon:o}));
 
 // ── VAKİT TANIMLARI ──
+// Diyanet takvimindeki altı vakit. AlAdhan'ın "Fajr" değeri Diyanet'in İmsak vaktine karşılık gelir
+// (AlAdhan'ın kendi "Imsak" alanı Fajr'dan 10 dk öncedir ve Diyanet takviminde yoktur).
 const PRAYERS=[
-  {key:"Imsak",  tr:"İmsak",  icon:"☽",ezan:false},
-  {key:"Fajr",   tr:"Sabah",  icon:"🌙",ezan:true},
-  {key:"Sunrise",tr:"Güneş",  icon:"☀️",ezan:false},
-  {key:"Dhuhr",  tr:"Öğle",   icon:"🌤",ezan:true},
-  {key:"Asr",    tr:"İkindi", icon:"⛅",ezan:true},
-  {key:"Maghrib",tr:"Akşam",  icon:"🌇",ezan:true},
-  {key:"Isha",   tr:"Yatsı",  icon:"🌃",ezan:true},
+  {key:"Fajr",   tr:"İmsak",  icon:"🌙",alert:true},
+  {key:"Sunrise",tr:"Güneş",  icon:"☀️",alert:false},
+  {key:"Dhuhr",  tr:"Öğle",   icon:"🌤",alert:true},
+  {key:"Asr",    tr:"İkindi", icon:"⛅",alert:true},
+  {key:"Maghrib",tr:"Akşam",  icon:"🌇",alert:true},
+  {key:"Isha",   tr:"Yatsı",  icon:"🌃",alert:true},
 ];
+const HIJRI_MONTHS=["Muharrem","Safer","Rebiülevvel","Rebiülahir","Cemaziyelevvel","Cemaziyelahir",
+  "Recep","Şaban","Ramazan","Şevval","Zilkade","Zilhicce"];
 
-// ── WEB AUDIO EZAN MELODİSİ ──
-let audioCtx=null;
-function getAudioCtx(){
-  if(!audioCtx) audioCtx=new(window.AudioContext||window.webkitAudioContext)();
-  if(audioCtx.state==='suspended') audioCtx.resume();
-  return audioCtx;
-}
-
-function playNote(ctx,freq,start,dur,gain=0.12){
-  const o=ctx.createOscillator();
-  const g=ctx.createGain();
-  const rev=ctx.createConvolver(); // skip convolver, use simple gain envelope
-  o.type='sine';
-  o.frequency.setValueAtTime(freq,start);
-  g.gain.setValueAtTime(0,start);
-  g.gain.linearRampToValueAtTime(gain,start+Math.min(dur*0.3,0.5));
-  g.gain.setValueAtTime(gain,start+dur-Math.min(dur*0.25,0.6));
-  g.gain.linearRampToValueAtTime(0,start+dur);
-  o.connect(g);
-  g.connect(ctx.destination);
-  o.start(start);
-  o.stop(start+dur+0.1);
-}
-
-function playEzanMelody(){
-  const ctx=getAudioCtx();
-  const t=ctx.currentTime+0.1;
-  // Hicaz makamı: A Bb C# D E F G A
-  // Frekanslar (oktav 3-4)
-  const A3=220,Bb3=233.08,Cs4=277.18,D4=293.66,E4=329.63,D3=146.83;
-  const melody=[
-    [A3,0,2.2],[Bb3,2.4,0.9],[Cs4,3.5,2.0],[D4,5.7,3.0],
-    [D4,9.0,0.8],[Cs4,10.0,0.8],[Bb3,11.0,0.8],[A3,12.0,2.5],
-    [A3,15.0,0.8],[Bb3,16.0,0.8],[Cs4,17.0,1.8],[D4,19.0,2.8],
-    [E4,22.0,2.2],[D4,24.5,0.9],[Cs4,25.6,0.9],[Bb3,26.7,1.8],
-    [A3,28.8,3.5],
-  ];
-  melody.forEach(([f,s,d])=>playNote(ctx,f,t+s,d,0.10));
-  // Hafif drone
-  playNote(ctx,D3,t,32,0.02);
-}
-
-function playNotifSound(){
-  const ctx=getAudioCtx();
-  const t=ctx.currentTime+0.05;
-  playNote(ctx,659.25,t,0.15,0.08);      // E5
-  playNote(ctx,880,t+0.15,0.15,0.08);    // A5
-  playNote(ctx,1318.5,t+0.3,0.4,0.10);   // E6
-}
+// Vakit girdikten sonra uyarının gösterilebileceği süre (dakika)
+const ALERT_WINDOW=15;
+// method=13: Diyanet; school=0: İkindi asr-ı evvel (Diyanet takvimiyle aynı)
+const API_BASE='https://api.aladhan.com/v1/calendar';
+const API_PARAMS='method=13&school=0&timezonestring=Europe/Istanbul';
 
 // ── YARDIMCI FONKSİYONLAR ──
-function todayStr(){
-  const d=new Date();
-  return `${String(d.getDate()).padStart(2,'0')}-${String(d.getMonth()+1).padStart(2,'0')}-${d.getFullYear()}`;
+const pad=n=>String(n).padStart(2,'0');
+function dayKey(d){return `${pad(d.getDate())}-${pad(d.getMonth()+1)}-${d.getFullYear()}`;}
+function addDays(d,n){const x=new Date(d);x.setDate(x.getDate()+n);return x;}
+function esc(s){
+  return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
+function cleanTime(v){return String(v||'').replace(/\s*\(.*?\)\s*/g,'').trim();}
 function timeToMin(s){
   if(!s)return-1;
-  const p=s.replace(/\s*\(.*?\)/g,'').trim().split(':').map(Number);
+  const p=s.split(':').map(Number);
+  if(p.length<2||isNaN(p[0])||isNaN(p[1]))return-1;
   return p[0]*60+p[1];
 }
 function nowMin(){const d=new Date();return d.getHours()*60+d.getMinutes();}
@@ -600,7 +565,7 @@ function nowSec(){const d=new Date();return d.getHours()*3600+d.getMinutes()*60+
 function fmtCountdown(s){
   if(s<0)return'--:--:--';
   const h=Math.floor(s/3600),m=Math.floor((s%3600)/60),ss=s%60;
-  return `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(ss).padStart(2,'0')}`;
+  return `${pad(h)}:${pad(m)}:${pad(ss)}`;
 }
 function miladiStr(){
   return new Date().toLocaleDateString('tr-TR',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
@@ -609,22 +574,25 @@ function miladiStr(){
 // ── DURUM (STATE) ──
 const state={
   city:null,
+  dayKey:null,
   timings:null,
+  tomorrow:null,
   hijri:'',
   loading:false,
   error:'',
   showCityPicker:false,
-  ezanModal:null,
-  ezanPlaying:false,
-  firedToday:{},
-  lastDay:new Date().getDate(),
+  vakitModal:null,
+  nextKey:null,
 };
 
 // ── KAYITLI ŞEHİR ──
 function loadCity(){
   try{
     const s=localStorage.getItem('namaz_city');
-    if(s){state.city=JSON.parse(s);return true;}
+    if(s){
+      const c=JSON.parse(s);
+      if(c&&typeof c.lat==='number'&&typeof c.lon==='number'){state.city=c;return true;}
+    }
   }catch{}
   return false;
 }
@@ -632,29 +600,103 @@ function saveCity(c){
   try{localStorage.setItem('namaz_city',JSON.stringify(c));}catch{}
 }
 
-// ── API ÇAĞRISI ──
-async function fetchTimings(){
-  if(!state.city)return;
-  state.loading=true;state.error='';render();
+// ── AYLIK TAKVİM (ÇEVRİMDIŞI) ──
+// Ayın tüm vakitleri tek istekte çekilip localStorage'a yazılır; internet olmadan da çalışır.
+const CAL_PREFIX='namaz_cal_';
+function calKey(city,y,m){return `${CAL_PREFIX}${city.lat.toFixed(3)},${city.lon.toFixed(3)}_${y}-${pad(m)}`;}
+function loadMonth(city,y,m){
+  try{const s=localStorage.getItem(calKey(city,y,m));return s?JSON.parse(s):null;}catch{return null;}
+}
+function pruneMonths(){
+  // Bu aydan eski kayıtları sil
+  const d=new Date(),cur=`${d.getFullYear()}-${pad(d.getMonth()+1)}`;
   try{
-    const url=`https://api.aladhan.com/v1/timings/${todayStr()}?latitude=${state.city.lat}&longitude=${state.city.lon}&method=13&school=1&timezonestring=Europe/Istanbul`;
-    const res=await fetch(url);
-    if(!res.ok)throw new Error('API error');
-    const json=await res.json();
-    if(json?.data?.timings){
-      const clean={};
-      Object.entries(json.data.timings).forEach(([k,v])=>{
-        clean[k]=v.replace(/\s*\(.*?\)\s*/g,'').trim();
-      });
-      state.timings=clean;
-      const h=json.data?.date?.hijri;
-      if(h) state.hijri=`${h.day} ${h.month?.en||''} ${h.year}`;
+    for(let i=localStorage.length-1;i>=0;i--){
+      const k=localStorage.key(i);
+      if(k&&k.startsWith(CAL_PREFIX)&&k.slice(-7)<cur)localStorage.removeItem(k);
     }
-  }catch{
-    state.error='Vakitler yüklenemedi. İnternet bağlantınızı kontrol edin.';
+  }catch{}
+}
+function saveMonth(city,y,m,days){
+  pruneMonths();
+  try{localStorage.setItem(calKey(city,y,m),JSON.stringify(days));}catch{}
+}
+const inflight={};
+function fetchMonth(city,y,m){
+  const k=calKey(city,y,m);
+  if(inflight[k])return inflight[k];
+  inflight[k]=(async()=>{
+    const res=await fetch(`${API_BASE}/${y}/${m}?latitude=${city.lat}&longitude=${city.lon}&${API_PARAMS}`);
+    if(!res.ok)throw new Error('API '+res.status);
+    const json=await res.json();
+    if(!Array.isArray(json?.data))throw new Error('API format');
+    const days={};
+    json.data.forEach(d=>{
+      const key=d?.date?.gregorian?.date;
+      if(!key||!d.timings)return;
+      const t={};
+      PRAYERS.forEach(p=>{t[p.key]=cleanTime(d.timings[p.key]);});
+      const h=d.date.hijri;
+      days[key]={t,h:h?[h.day,h.month?.number,h.year]:null};
+    });
+    saveMonth(city,y,m,days);
+    return days;
+  })().finally(()=>{delete inflight[k];});
+  return inflight[k];
+}
+function getCachedDay(city,date){
+  const days=loadMonth(city,date.getFullYear(),date.getMonth()+1);
+  return days?days[dayKey(date)]||null:null;
+}
+function hijriStr(h){
+  if(!h)return'';
+  const name=HIJRI_MONTHS[(h[1]|0)-1]||'';
+  return `${h[0]} ${name} ${h[2]}`;
+}
+
+// ── VAKİTLERİ YÜKLE ──
+async function loadTimings(){
+  const today=new Date();
+  state.dayKey=dayKey(today);
+  const city=state.city;
+  if(!city)return;
+  let entry=getCachedDay(city,today);
+  if(!entry){
+    state.loading=true;state.error='';renderMain();
+    try{
+      const days=await fetchMonth(city,today.getFullYear(),today.getMonth()+1);
+      entry=days[dayKey(today)]||null;
+      if(!entry)throw new Error('gün bulunamadı');
+    }catch{
+      if(state.city!==city)return;
+      state.loading=false;
+      state.timings=null;
+      state.error=navigator.onLine===false
+        ?'İnternet bağlantısı yok ve bu ayın vakitleri henüz kaydedilmemiş.'
+        :'Vakitler yüklenemedi. İnternet bağlantınızı kontrol edin.';
+      renderMain();
+      return;
+    }
+    if(state.city!==city)return;
   }
-  state.loading=false;
-  render();
+  state.loading=false;state.error='';
+  state.timings=entry.t;
+  state.hijri=hijriStr(entry.h);
+  const tm=addDays(today,1);
+  state.tomorrow=getCachedDay(city,tm)?.t||null;
+  state.nextKey=null;
+  renderMain();
+  checkAlerts();
+
+  // Ay sonuna yaklaşınca sonraki ayı da önceden kaydet
+  if(!state.tomorrow||today.getDate()>=20){
+    const nm=new Date(today.getFullYear(),today.getMonth()+1,1);
+    if(!loadMonth(city,nm.getFullYear(),nm.getMonth()+1)){
+      fetchMonth(city,nm.getFullYear(),nm.getMonth()+1).then(()=>{
+        if(state.city===city&&!state.tomorrow){state.tomorrow=getCachedDay(city,tm)?.t||null;renderMain();}
+      }).catch(()=>{});
+    }
+  }
 }
 
 // ── SONRAKİ VAKİT ──
@@ -665,43 +707,63 @@ function getNextPrayer(){
     const t=timeToMin(state.timings[p.key]);
     if(t>cm)return{...p,time:state.timings[p.key],min:t,tomorrow:false};
   }
-  // Tüm vakitler geçmişse → yarının ilk vakti
-  return{...PRAYERS[0],time:state.timings[PRAYERS[0].key],min:timeToMin(state.timings[PRAYERS[0].key]),tomorrow:true};
+  // Tüm vakitler geçmişse → yarının İmsak vakti (yoksa bugünkü yaklaşık değer)
+  const src=state.tomorrow||state.timings;
+  const p=PRAYERS[0];
+  return{...p,time:src[p.key],min:timeToMin(src[p.key]),tomorrow:true};
+}
+function countdownSec(np){
+  return (np.tomorrow?86400:0)+np.min*60-nowSec();
 }
 
-// ── EZAN ZAMANI KONTROLÜ ──
-function checkEzanTime(){
+// ── VAKİT GİRİŞ UYARISI (görsel) ──
+function loadFired(){
+  try{
+    const s=JSON.parse(localStorage.getItem('namaz_fired')||'null');
+    if(s&&s.day===state.dayKey)return s.keys||{};
+  }catch{}
+  return {};
+}
+function saveFired(keys){
+  try{localStorage.setItem('namaz_fired',JSON.stringify({day:state.dayKey,keys}));}catch{}
+}
+function checkAlerts(){
   if(!state.timings)return;
-  const d=new Date();
-  if(d.getSeconds()!==0)return;
-  const cm=d.getHours()*60+d.getMinutes();
-  PRAYERS.forEach(p=>{
-    if(!p.ezan)return;
+  const cm=nowMin();
+  const fired=loadFired();
+  for(const p of PRAYERS){
+    if(!p.alert||fired[p.key])continue;
     const t=timeToMin(state.timings[p.key]);
-    if(t>=0&&cm===t&&!state.firedToday[p.key]){
-      state.firedToday[p.key]=true;
-      state.ezanModal=p;
-      state.ezanPlaying=false;
-      try{playNotifSound();}catch{}
-      render();
+    // Saniyenin tam 0 olmasını beklemek yerine pencere: telefon kısa süre uyusa da uyarı kaçmaz
+    if(t>=0&&cm>=t&&cm<t+ALERT_WINDOW){
+      fired[p.key]=true;
+      saveFired(fired);
+      state.vakitModal={...p,time:state.timings[p.key]};
+      renderOverlay();
     }
-  });
-  // Gün değişimi
-  if(d.getDate()!==state.lastDay){
-    state.lastDay=d.getDate();
-    state.firedToday={};
-    fetchTimings();
   }
 }
 
+// ── SANİYELİK DÖNGÜ ──
+function tick(){
+  if(dayKey(new Date())!==state.dayKey){loadTimings();return;}
+  if(!state.timings)return;
+  checkAlerts();
+  const np=getNextPrayer();
+  if(np&&np.key+np.tomorrow!==state.nextKey){
+    // Sıradaki vakit değişti → listeyi yeniden çiz
+    renderMain();
+    return;
+  }
+  const timerEl=document.querySelector('.cd-timer');
+  if(timerEl&&np)timerEl.textContent=fmtCountdown(countdownSec(np));
+}
+
 // ── RENDER ──
-function render(){
-  const app=document.getElementById('app');
+function renderMain(){
+  const main=document.getElementById('main');
   const nextP=getNextPrayer();
-  const cs=nextP?(()=>{
-    const ns=nowSec(),ts=nextP.min*60;
-    let diff=ts-ns;if(diff<0)diff+=86400;return diff;
-  })():0;
+  state.nextKey=nextP?nextP.key+nextP.tomorrow:null;
 
   let html=`
     <!-- Header -->
@@ -711,17 +773,17 @@ function render(){
         <div class="app-title">Namaz Vakitleri</div>
       </div>
       <button class="city-btn" onclick="openCityPicker()">
-        📍 ${state.city?state.city.name:'Şehir Seç'}
+        📍 ${state.city?esc(state.city.name):'Şehir Seç'}
       </button>
     </div>
 
     <!-- Mosque -->
-    <div class="mosque-wrap">
+    <div class="mosque-wrap" aria-hidden="true">
       <svg viewBox="0 0 400 70" preserveAspectRatio="xMidYMax meet">
-        <path d="M0,70 L0,58 Q20,52 40,46 L40,32 Q50,10 55,5 Q60,-2 65,5 Q70,10 80,32 L80,46 
-          L90,46 L90,36 Q100,18 110,12 Q120,-2 130,12 Q140,18 150,36 L150,46 
+        <path d="M0,70 L0,58 Q20,52 40,46 L40,32 Q50,10 55,5 Q60,-2 65,5 Q70,10 80,32 L80,46
+          L90,46 L90,36 Q100,18 110,12 Q120,-2 130,12 Q140,18 150,36 L150,46
           L160,46 L160,40 L170,28 Q180,18 190,28 L200,40 L200,46
-          L220,46 L220,32 Q240,5 260,0 Q280,5 300,32 L300,46 
+          L220,46 L220,32 Q240,5 260,0 Q280,5 300,32 L300,46
           L310,46 L310,38 Q315,20 320,15 Q325,5 330,15 Q335,20 340,38 L340,46
           Q360,52 380,58 L400,62 L400,70 Z" fill="#0d5e3f30"/>
         <circle cx="130" cy="16" r="5" fill="#0d5e3f30"/>
@@ -734,7 +796,7 @@ function render(){
     <!-- Date -->
     <div class="date-strip">
       <div class="date-miladi">${miladiStr()}</div>
-      ${state.hijri?`<div class="date-hijri">${state.hijri}</div>`:''}
+      ${state.hijri?`<div class="date-hijri">${esc(state.hijri)}</div>`:''}
     </div>
   `;
 
@@ -744,8 +806,8 @@ function render(){
     <div class="countdown-card">
       <div class="cd-label">${nextP.tomorrow?'YARIN ':''}SONRAKİ VAKİT</div>
       <div class="cd-name">${nextP.tr}</div>
-      <div class="cd-time-small">${nextP.time}</div>
-      <div class="cd-timer">${fmtCountdown(cs)}</div>
+      <div class="cd-time-small">${esc(nextP.time)}</div>
+      <div class="cd-timer" role="timer">${fmtCountdown(countdownSec(nextP))}</div>
       <div class="cd-sub">kalan süre</div>
     </div>`;
   }
@@ -755,7 +817,7 @@ function render(){
     html+=`<div class="loading"><span>Vakitler yükleniyor...</span></div>`;
   }
   if(state.error){
-    html+=`<div class="error-box">${state.error}</div>`;
+    html+=`<div class="error-box" role="alert">${esc(state.error)}</div>`;
   }
 
   // Prayer list
@@ -763,171 +825,168 @@ function render(){
     const cm=nowMin();
     const nextIdx=PRAYERS.findIndex(p=>timeToMin(state.timings[p.key])>cm);
     html+=`<div class="prayer-section">
-      <div class="prayer-section-label">GÜNLÜK VAKİTLER — DİYANET</div>`;
+      <div class="prayer-section-label">GÜNLÜK VAKİTLER — DİYANET</div>
+      <ul style="list-style:none">`;
     PRAYERS.forEach((p,i)=>{
       const time=state.timings[p.key]||'--:--';
       const pMin=timeToMin(state.timings[p.key]);
       const isNext=i===(nextIdx>=0?nextIdx:0);
       const isPast=pMin<=cm&&!isNext;
       const cls=`prayer-row${isNext?' is-next':''}${isPast?' is-past':''}`;
-      const sub=p.ezan?(isNext?'⏰ Sıradaki':isPast?'✓ Geçti':'Ezan vakti'):'';
+      const sub=isNext?'⏰ Sıradaki':isPast?'✓ Geçti':'';
       const delay=0.15+i*0.06;
       html+=`
-      <div class="${cls}" style="animation:slideUp ${delay}s ease both" onclick="openEzan(${i})">
+      <li class="${cls}" style="animation:slideUp ${delay}s ease both">
         <div class="prayer-left">
-          <div class="prayer-icon">${p.icon}</div>
+          <div class="prayer-icon" aria-hidden="true">${p.icon}</div>
           <div>
             <div class="prayer-name">${p.tr}</div>
             ${sub?`<div class="prayer-sub">${sub}</div>`:''}
           </div>
         </div>
-        <div class="prayer-time">${time}</div>
-      </div>`;
+        <div class="prayer-time">${esc(time)}</div>
+      </li>`;
     });
-    html+=`</div>`;
+    html+=`</ul></div>`;
 
     html+=`
     <div class="footer-note">
-      <p>Vakitler Diyanet İşleri Başkanlığı hesaplama metoduna (Hanefi) göre alınmaktadır. Herhangi bir vakte dokunarak ezan dinleyebilirsiniz.</p>
+      <p>Vakitler Diyanet İşleri Başkanlığı hesaplama metoduna göre alınmaktadır. Ayın vakitleri telefona kaydedilir, internet olmadan da görünür. Vakit girdiğinde uygulama açıksa ekranda uyarı çıkar.</p>
     </div>`;
   }
 
   // Bottom mosque
   html+=`
-  <div class="mosque-wrap" style="margin-top:-8px;opacity:0.4">
+  <div class="mosque-wrap" style="margin-top:-8px;opacity:0.4" aria-hidden="true">
     <svg viewBox="0 0 400 50" preserveAspectRatio="xMidYMax meet">
-      <path d="M0,50 L0,40 Q50,35 80,30 Q100,10 120,5 Q130,0 140,5 Q160,10 180,30 Q210,35 250,30 
+      <path d="M0,50 L0,40 Q50,35 80,30 Q100,10 120,5 Q130,0 140,5 Q160,10 180,30 Q210,35 250,30
         Q270,12 285,6 Q295,0 305,6 Q320,12 340,30 Q370,35 400,40 L400,50 Z" fill="#04120d60"/>
     </svg>
   </div>`;
 
-  app.innerHTML=html;
+  main.innerHTML=html;
+}
 
-  // City picker overlay
-  if(state.showCityPicker) renderCityPicker();
-
-  // Ezan modal overlay
-  if(state.ezanModal) renderEzanModal();
+// Kaplamalar (şehir seçici, vakit uyarısı) ana ekrandan ayrı çizilir;
+// böylece periyodik yenileme açık listeyi ve arama kutusunu bozmaz.
+function renderOverlay(){
+  const ov=document.getElementById('overlay');
+  ov.innerHTML='';
+  if(state.showCityPicker) renderCityPicker(ov);
+  else if(state.vakitModal) renderVakitModal(ov);
 }
 
 // ── ŞEHİR SEÇİCİ ──
 let citySearch='';
-function renderCityPicker(){
-  const app=document.getElementById('app');
-  const filtered=CITIES.filter(c=>
-    c.name.toLocaleLowerCase('tr').includes(citySearch.toLocaleLowerCase('tr'))
-  );
-  let ol=document.createElement('div');
-  ol.className='city-overlay';
-  ol.innerHTML=`
+function cityListHtml(){
+  const q=citySearch.toLocaleLowerCase('tr');
+  const filtered=CITIES.filter(c=>c.name.toLocaleLowerCase('tr').includes(q));
+  return filtered.map(c=>`
+    <button class="city-item${state.city&&state.city.name===c.name?' selected':''}" onclick="selectCity(${CITIES.indexOf(c)})">${esc(c.name)}</button>
+  `).join('')+(filtered.length===0?'<div class="city-empty">Sonuç bulunamadı</div>':'');
+}
+function renderCityPicker(ov){
+  const el=document.createElement('div');
+  el.className='city-overlay';
+  el.setAttribute('role','dialog');
+  el.setAttribute('aria-label','Şehir seçin');
+  el.innerHTML=`
     <div class="city-header">
       <div class="city-header-top">
         <span class="city-title">Şehir Seçin</span>
-        ${state.city?`<button class="city-close" onclick="closeCityPicker()">✕</button>`:''}
+        ${state.city?`<button class="city-close" onclick="closeCityPicker()" aria-label="Kapat">✕</button>`:''}
       </div>
-      <input class="city-search" type="text" placeholder="Şehir ara..." value="${citySearch}" oninput="onCitySearch(this.value)">
+      <input class="city-search" type="text" placeholder="Şehir ara..." aria-label="Şehir ara" value="${esc(citySearch)}" oninput="onCitySearch(this.value)">
+      ${'geolocation' in navigator?`<button class="loc-btn" onclick="useLocation()">📍 Konumumu kullan</button>`:''}
+      <div class="loc-msg" id="loc-msg"></div>
     </div>
-    <div class="city-list">
-      ${filtered.map((c,i)=>`
-        <button class="city-item${state.city&&state.city.name===c.name?' selected':''}" onclick="selectCity(${i},'${c.name}')">${c.name}</button>
-      `).join('')}
-      ${filtered.length===0?'<div class="city-empty">Sonuç bulunamadı</div>':''}
-    </div>
+    <div class="city-list">${cityListHtml()}</div>
   `;
-  app.appendChild(ol);
-  // Focus search
-  setTimeout(()=>{const inp=ol.querySelector('.city-search');if(inp)inp.focus();},100);
+  ov.appendChild(el);
 }
 
-function openCityPicker(){ citySearch='';state.showCityPicker=true;render(); }
-function closeCityPicker(){ if(state.city){state.showCityPicker=false;render();} }
+function openCityPicker(){ citySearch='';state.showCityPicker=true;renderOverlay(); }
+function closeCityPicker(){ if(state.city){state.showCityPicker=false;renderOverlay();} }
 function onCitySearch(v){
   citySearch=v;
-  // Re-render just city list
   const list=document.querySelector('.city-list');
-  if(!list)return;
-  const filtered=CITIES.filter(c=>
-    c.name.toLocaleLowerCase('tr').includes(v.toLocaleLowerCase('tr'))
-  );
-  list.innerHTML=filtered.map((c,i)=>`
-    <button class="city-item${state.city&&state.city.name===c.name?' selected':''}" onclick="selectCity(${CITIES.indexOf(c)},'${c.name}')">${c.name}</button>
-  `).join('')+(filtered.length===0?'<div class="city-empty">Sonuç bulunamadı</div>':'');
+  if(list)list.innerHTML=cityListHtml();
 }
-function selectCity(idx){
-  const c=CITIES[idx];
+function setCity(c){
   state.city=c;
   state.showCityPicker=false;
   state.timings=null;
+  state.tomorrow=null;
   state.hijri='';
-  state.firedToday={};
   saveCity(c);
-  render();
-  fetchTimings();
+  renderOverlay();
+  renderMain();
+  loadTimings();
+}
+function selectCity(idx){
+  const c=CITIES[idx];
+  if(c)setCity(c);
+}
+function nearestCity(lat,lon){
+  let best=null,bd=Infinity;
+  const k=Math.cos(lat*Math.PI/180);
+  CITIES.forEach(c=>{
+    const d=(c.lat-lat)**2+((c.lon-lon)*k)**2;
+    if(d<bd){bd=d;best=c;}
+  });
+  return best;
+}
+function useLocation(){
+  const msg=document.getElementById('loc-msg');
+  if(msg)msg.textContent='Konum alınıyor...';
+  navigator.geolocation.getCurrentPosition(pos=>{
+    const lat=Math.round(pos.coords.latitude*1000)/1000;
+    const lon=Math.round(pos.coords.longitude*1000)/1000;
+    const near=nearestCity(lat,lon);
+    setCity({name:`Konumum${near?' ('+near.name+')':''}`,lat,lon});
+  },()=>{
+    const m=document.getElementById('loc-msg');
+    if(m)m.textContent='Konum alınamadı. Konum iznini kontrol edin veya listeden seçin.';
+  },{enableHighAccuracy:false,timeout:15000,maximumAge:3600000});
 }
 
-// ── EZAN MODAL ──
-function renderEzanModal(){
-  const app=document.getElementById('app');
-  const p=state.ezanModal;
-  let ol=document.createElement('div');
-  ol.className='ezan-overlay';
-  ol.innerHTML=`
+// ── VAKİT UYARISI ──
+function renderVakitModal(ov){
+  const p=state.vakitModal;
+  const el=document.createElement('div');
+  el.className='ezan-overlay';
+  el.setAttribute('role','alertdialog');
+  el.setAttribute('aria-label',`${p.tr} vakti girdi`);
+  el.innerHTML=`
     <div class="ezan-card">
-      <div class="ezan-mosque">🕌</div>
-      <div class="ezan-title">Allahu Akbar</div>
-      <div class="ezan-subtitle">${p.tr.toUpperCase()} VAKTİ${state.firedToday[p.key]?' GİRDİ':''}</div>
-      <button class="ezan-play-btn${state.ezanPlaying?' playing':''}" onclick="playEzan()" ${state.ezanPlaying?'disabled':''}>
-        ${state.ezanPlaying?'♫  Ezan Okunuyor...':'▶  Ezan Dinle'}
-      </button>
-      <button class="ezan-close-btn" onclick="closeEzan()">Kapat</button>
+      <div class="ezan-mosque" aria-hidden="true">🕌</div>
+      <div class="ezan-title">${p.tr} Vakti</div>
+      <div class="ezan-subtitle">VAKİT GİRDİ</div>
+      <div class="ezan-time">${esc(p.time||'')}</div>
+      <button class="ezan-close-btn" onclick="closeVakitModal()">Tamam</button>
     </div>
   `;
-  app.appendChild(ol);
+  ov.appendChild(el);
 }
-
-function openEzan(idx){
-  const p=PRAYERS[idx];
-  if(!p)return;
-  state.ezanModal=p;
-  state.ezanPlaying=false;
-  try{playNotifSound();}catch{}
-  render();
-}
-function closeEzan(){
-  state.ezanModal=null;
-  state.ezanPlaying=false;
-  render();
-}
-function playEzan(){
-  state.ezanPlaying=true;
-  render();
-  try{playEzanMelody();}catch{}
-  setTimeout(()=>{state.ezanPlaying=false;if(state.ezanModal)render();},32000);
+function closeVakitModal(){
+  state.vakitModal=null;
+  renderOverlay();
 }
 
 // ── BAŞLATMA ──
 function init(){
   if(!loadCity()) state.showCityPicker=true;
-  render();
-  if(state.city) fetchTimings();
+  renderMain();
+  renderOverlay();
+  loadTimings();
 
-  // Her saniye güncelle
-  setInterval(()=>{
-    checkEzanTime();
-    // Sadece countdown güncelle (tam re-render yerine)
-    const timerEl=document.querySelector('.cd-timer');
-    if(timerEl&&state.timings){
-      const np=getNextPrayer();
-      if(np){
-        const ns=nowSec(),ts=np.min*60;
-        let diff=ts-ns;if(diff<0)diff+=86400;
-        timerEl.textContent=fmtCountdown(diff);
-      }
-    }
-  },1000);
+  setInterval(tick,1000);
+  // Her 5 dakikada ana ekranı yenile (tarih vb.); kaplamalara dokunmaz
+  setInterval(()=>{ if(state.error&&!state.loading)loadTimings(); else renderMain(); },300000);
 
-  // Her 5 dakikada tam render (tarih vb. güncelleme)
-  setInterval(render,300000);
+  // Uygulama arka plandan dönünce veya internet gelince hemen güncelle
+  document.addEventListener('visibilitychange',()=>{ if(!document.hidden){ if(!state.timings&&!state.loading)loadTimings(); else tick(); } });
+  window.addEventListener('online',()=>{ if(!state.timings&&!state.loading)loadTimings(); });
 }
 
 // Start

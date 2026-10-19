@@ -1,21 +1,24 @@
 # 🕌 Namaz Vakitleri — Ezan Uygulaması
 
-Diyanet İşleri Başkanlığı hesaplama metoduna dayalı namaz vakitleri ve ezan uygulaması.
+Diyanet İşleri Başkanlığı hesaplama metoduna dayalı namaz vakitleri uygulaması.
 
 ## Özellikler
 
-- 📍 **81 il desteği** — Tüm Türkiye il merkezleri koordinatlarıyla
+- 📍 **81 il + konum** — İl merkezleri veya telefonun konumu (ilçeler için daha doğru)
 - 🕐 **Gerçek zamanlı geri sayım** — Sonraki vakte saniye saniye
-- 🎵 **Ezan melodisi** — Web Audio API ile Hicaz makamı sentezi
+- 🔔 **Görsel vakit uyarısı** — Vakit girdiğinde uygulama açıksa ekranda uyarı (sessiz)
 - 📱 **iPhone PWA** — Ana ekrana eklenebilir, tam ekran çalışır
-- 🔄 **Otomatik güncelleme** — Gece yarısı yeni gün vakitlerini çeker
-- 💾 **Offline destek** — Service Worker ile çevrimdışı çalışır
+- 🔄 **Otomatik güncelleme** — Gece yarısı yeni güne geçer
+- 💾 **Offline destek** — Ayın tüm vakitleri telefona kaydedilir, internet olmadan da çalışır
+
+> Not: iPhone'da PWA'lar arka planda çalışmaz; vakit uyarısı yalnızca uygulama açıkken görünür.
 
 ## Veri Kaynağı
 
-[AlAdhan API](https://aladhan.com) — `method=13` (Diyanet İşleri Başkanlığı), `school=1` (Hanefi)
+[AlAdhan API](https://aladhan.com) aylık takvim — `method=13` (Diyanet İşleri Başkanlığı), `school=0` (İkindi asr-ı evvel, Diyanet takvimindeki gibi)
 
-Doğruluk: Diyanet resmi sitesiyle ±1 dakika tolerans.
+İmsak olarak AlAdhan'ın `Fajr` değeri gösterilir (AlAdhan'ın `Imsak` alanı 10 dk erkendir ve Diyanet takviminde yoktur).
+Vakitleri arada bir [namazvakitleri.diyanet.gov.tr](https://namazvakitleri.diyanet.gov.tr) ile karşılaştırmanız önerilir.
 
 ## Kurulum (iPhone)
 
@@ -26,8 +29,8 @@ Doğruluk: Diyanet resmi sitesiyle ±1 dakika tolerans.
 ## Teknik Detaylar
 
 - **Sıfır bağımlılık** — Tek HTML dosyası, vanilla JavaScript
-- **Web Audio API** — Ezan melodisi için (Hicaz makamı)
-- **Service Worker** — Offline çalışma ve cache yönetimi
+- **localStorage** — Seçilen şehir ve aylık vakit takvimi
+- **Service Worker** — Uygulama dosyaları önce ağdan, ağ yoksa önbellekten (dosyalar değişince `sw.js` içindeki `CACHE_NAME` artırılmalı)
 - **PWA Manifest** — Standalone uygulama deneyimi
 - **CSS Custom Properties** — Tutarlı İslami tema
 
